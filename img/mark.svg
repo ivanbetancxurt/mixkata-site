@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+  <rect width="64" height="64" rx="16" fill="#0B100E"/>
+  <rect x="1" y="1" width="62" height="62" rx="15" stroke="#22E3A6" stroke-opacity="0.35" stroke-width="2"/>
+  <!-- belt -->
+  <rect x="0" y="28" width="64" height="8" fill="#22E3A6"/>
+  <rect x="26" y="28" width="12" height="8" fill="#04281c"/>
+  <rect x="28.5" y="29.5" width="7" height="5" fill="#22E3A6"/>
+</svg>

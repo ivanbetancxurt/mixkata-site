@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MixKata: mix ear training for bedroom producers</title>
+  <meta name="description" content="MixKata trains you to hear EQ, compression, loudness, and stereo width inside real genre loops. Short daily katas. Coming soon on iOS.">
+  <meta name="theme-color" content="#070807">
+  <link rel="icon" href="img/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="img/favicon.png" sizes="32x32" type="image/png">
+  <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+  <link rel="canonical" href="https://mixkata.com/">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://mixkata.com/">
+  <meta property="og:title" content="MixKata: mix ear training for bedroom producers">
+  <meta property="og:description" content="Train your ears on EQ, compression, loudness, and stereo width, inside real genre loops.">
+  <meta property="og:image" content="https://mixkata.com/img/og.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="MixKata: mix ear training for bedroom producers">
+  <meta name="twitter:description" content="Train your ears on EQ, compression, loudness, and stereo width, inside real genre loops.">
+  <meta name="twitter:image" content="https://mixkata.com/img/og.png">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="page">
+    <header class="nav">
+      <a class="brand" href="index.html">
+        <img src="img/mark.svg" width="28" height="28" alt="">
+        MixKata
+      </a>
+      <a class="nav-link" href="privacy.html">Privacy</a>
+    </header>
+
+    <main>
+      <section class="hero">
+        <p class="pill">Coming soon on iOS</p>
+        <h1>Most producers can&rsquo;t hear this.</h1>
+        <p class="lede">MixKata is a dojo-themed ear trainer for bedroom producers. Short daily tests train you to hear EQ, compression, loudness, and stereo width inside real genre loops.</p>
+
+        <form class="waitlist" id="form" action="https://formsubmit.co/ivanab252@gmail.com" method="POST">
+          <input type="text" name="_honey" class="honey" tabindex="-1" autocomplete="off" aria-hidden="true">
+          <input type="hidden" name="_subject" value="MixKata waitlist signup">
+          <input type="hidden" name="_template" value="table">
+          <input type="hidden" name="_captcha" value="false">
+          <input type="hidden" name="_next" value="https://mixkata.com/?joined=1">
+          <div class="waitlist-row">
+            <label class="sr-only" for="email">Email</label>
+            <input id="email" name="email" type="email" inputmode="email" autocomplete="email" required placeholder="you@email.com">
+            <button type="submit" id="submit">Join the waitlist</button>
+          </div>
+          <p class="fineprint">Launch updates only. Unsubscribe anytime. <a href="privacy.html">Privacy</a></p>
+        </form>
+
+        <div class="confirm" id="confirm" role="status">
+          <h2>You&rsquo;re on the list.</h2>
+          <p>We&rsquo;ll email you when MixKata is ready. No other mail, and you can unsubscribe anytime.</p>
+        </div>
+        <div class="error" id="error" role="alert">
+          <h2>Couldn&rsquo;t join just now.</h2>
+          <p id="error-body">Please try again in a moment.</p>
+        </div>
+      </section>
+
+      <section class="features" aria-label="What MixKata includes">
+        <article class="feature">
+          <h2>
+            <span class="ico" aria-hidden="true">
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><rect x="1" y="3" width="2.2" height="8" rx="0.6" fill="#22E3A6"/><rect x="5.9" y="1.5" width="2.2" height="11" rx="0.6" fill="#22E3A6"/><rect x="10.8" y="4.5" width="2.2" height="6.5" rx="0.6" fill="#22E3A6"/></svg>
+            </span>
+            Daily katas
+          </h2>
+          <p>One short ear test a day. Listen, answer, and get a little sharper.</p>
+        </article>
+        <article class="feature">
+          <h2>
+            <span class="ico" aria-hidden="true">
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><rect y="6" width="14" height="2.2" fill="#22E3A6"/><rect x="5.4" y="6" width="3.2" height="2.2" fill="#04281c"/><rect x="6.1" y="6.5" width="1.8" height="1.2" fill="#22E3A6"/></svg>
+            </span>
+            Belt ranks
+          </h2>
+          <p>Work your way up as your ears improve, lesson by lesson.</p>
+        </article>
+        <article class="feature">
+          <h2>
+            <span class="ico" aria-hidden="true">
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1.5 9.5c1.2-3 2.2-5.8 3-5.8.9 0 1.3 3.2 2.5 3.2 1.3 0 1.6-4.4 2.7-4.4 1 0 1.8 4 3.3 7" stroke="#22E3A6" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+            Real genre loops
+          </h2>
+          <p>Train on loops made for the app, not generic test tones.</p>
+        </article>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div>MixKata &copy; 2026</div>
+      <div><a href="privacy.html">Privacy</a></div>
+    </footer>
+  </div>
+
+  <script>
+    (function () {
+      var form = document.getElementById("form");
+      var confirmBox = document.getElementById("confirm");
+      var errorBox = document.getElementById("error");
+      var errorBody = document.getElementById("error-body");
+      var button = document.getElementById("submit");
+      var endpoint = "https://formsubmit.co/ajax/ivanab252@gmail.com";
+
+      function showJoined() {
+        form.style.display = "none";
+        errorBox.style.display = "none";
+        confirmBox.style.display = "block";
+      }
+
+      if (/[?&]joined=1(?:&|$)/.test(location.search)) {
+        showJoined();
+        return;
+      }
+
+      form.addEventListener("submit", function (event) {
+        event.preventDefault();
+        errorBox.style.display = "none";
+
+        var honey = form.querySelector('[name="_honey"]');
+        if (honey && honey.value) {
+          showJoined();
+          return;
+        }
+
+        var email = document.getElementById("email").value.trim();
+        if (!email) return;
+
+        button.disabled = true;
+        button.textContent = "Joining...";
+
+        fetch(endpoint, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "Accept": "application/json"
+          },
+          body: JSON.stringify({
+            email: email,
+            _subject: "MixKata waitlist signup",
+            _template: "table",
+            _captcha: "false"
+          })
+        })
+          .then(function (res) { return res.json().then(function (data) { return { ok: res.ok, data: data }; }); })
+          .then(function (result) {
+            if (result.ok && result.data && result.data.success) {
+              showJoined();
+              return;
+            }
+            throw new Error((result.data && (result.data.message || result.data.error)) || "Please try again in a moment.");
+          })
+          .catch(function (err) {
+            errorBody.textContent = err.message || "Please try again in a moment.";
+            errorBox.style.display = "block";
+            button.disabled = false;
+            button.textContent = "Join the waitlist";
+          });
+      });
+    })();
+  </script>
+</body>
+</html>
