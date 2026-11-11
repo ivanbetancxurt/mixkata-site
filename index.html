@@ -170,6 +170,16 @@
         confirmBox.style.display = "block";
       }
 
+      function notifyOwner(email) {
+        try {
+          fetch("https://formsubmit.co/ajax/35e63d3dc9180ffd293e608e932ab081", {
+            method: "POST",
+            headers: { "Content-Type": "application/json", "Accept": "application/json" },
+            body: JSON.stringify({ email: email, _subject: "MixKata waitlist signup", _template: "table", _captcha: "false" })
+          }).catch(function () {});
+        } catch (e) {}
+      }
+
       function showError(message) {
         errorBody.textContent = message || "Please try again in a moment.";
         errorBox.style.display = "block";
@@ -223,6 +233,7 @@
           })
           .then(function (result) {
             if (result.data && result.data.success) {
+              notifyOwner(email);
               showJoined();
               return;
             }
