@@ -42,12 +42,9 @@
         <p class="lede">MixKata is an ear trainer for bedroom producers. Short daily katas teach you to hear EQ, compression, loudness, and stereo width inside real genre loops.</p>
 
         <div id="join" class="join">
-          <form class="waitlist" id="form" action="https://formsubmit.co/35e63d3dc9180ffd293e608e932ab081" method="POST">
-            <input type="text" name="_honey" class="honey" tabindex="-1" autocomplete="off" aria-hidden="true">
-            <input type="hidden" name="_subject" value="MixKata waitlist signup">
-            <input type="hidden" name="_template" value="table">
-            <input type="hidden" name="_captcha" value="false">
-            <input type="hidden" name="_next" value="https://mixkata.com/?joined=1">
+          <form class="waitlist" id="form" action="https://app.loops.so/api/newsletter-form/cmwcplkya1r4n0j2n2q2nfvfj" method="POST">
+            <input type="hidden" name="userGroup" value="waitlist">
+            <input type="hidden" name="source" value="mixkata.com">
             <div class="waitlist-row">
               <label class="sr-only" for="email">Email</label>
               <input id="email" name="email" type="email" inputmode="email" autocomplete="email" required placeholder="you@email.com">
@@ -165,12 +162,19 @@
       var errorBox = document.getElementById("error");
       var errorBody = document.getElementById("error-body");
       var button = document.getElementById("submit");
-      var endpoint = "https://formsubmit.co/ajax/35e63d3dc9180ffd293e608e932ab081";
+      var endpoint = "https://app.loops.so/api/newsletter-form/cmwcplkya1r4n0j2n2q2nfvfj";
 
       function showJoined() {
         form.style.display = "none";
         errorBox.style.display = "none";
         confirmBox.style.display = "block";
+      }
+
+      function showError(message) {
+        errorBody.textContent = message || "Please try again in a moment.";
+        errorBox.style.display = "block";
+        button.disabled = false;
+        button.textContent = "Join the waitlist";
       }
 
       if (/[?&]joined=1(?:&|$)/.test(location.search)) {
@@ -182,44 +186,51 @@
         event.preventDefault();
         errorBox.style.display = "none";
 
-        var honey = form.querySelector('[name="_honey"]');
-        if (honey && honey.value) {
-          showJoined();
-          return;
-        }
-
         var email = document.getElementById("email").value.trim();
         if (!email) return;
 
         button.disabled = true;
         button.textContent = "Joining...";
 
+        var body = new URLSearchParams(new FormData(form)).toString();
+
         fetch(endpoint, {
           method: "POST",
           headers: {
-            "Content-Type": "application/json",
-            "Accept": "application/json"
+            "Content-Type": "application/x-www-form-urlencoded"
           },
-          body: JSON.stringify({
-            email: email,
-            _subject: "MixKata waitlist signup",
-            _template: "table",
-            _captcha: "false"
-          })
+          body: body
         })
-          .then(function (res) { return res.json().then(function (data) { return { ok: res.ok, data: data }; }); })
+          .then(function (res) {
+            if (res.status === 429) {
+              return {
+                status: 429,
+                data: {
+                  success: false,
+                  message: "Too many signups just now. Please try again in a little while."
+                }
+              };
+            }
+            return res.json().then(
+              function (data) { return { status: res.status, data: data }; },
+              function () {
+                return {
+                  status: res.status,
+                  data: { success: false, message: "Please try again in a moment." }
+                };
+              }
+            );
+          })
           .then(function (result) {
-            if (result.ok && result.data && result.data.success) {
+            if (result.data && result.data.success) {
               showJoined();
               return;
             }
-            throw new Error((result.data && (result.data.message || result.data.error)) || "Please try again in a moment.");
+            var message = (result.data && result.data.message) || "Please try again in a moment.";
+            throw new Error(message);
           })
           .catch(function (err) {
-            errorBody.textContent = err.message || "Please try again in a moment.";
-            errorBox.style.display = "block";
-            button.disabled = false;
-            button.textContent = "Join the waitlist";
+            showError(err.message || "Please try again in a moment.");
           });
       });
     })();
